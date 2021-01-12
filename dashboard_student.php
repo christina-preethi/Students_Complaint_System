@@ -4,17 +4,17 @@
     session_start();
 
     if(isset( $_SESSION["student_id"])) {
-        echo "<h3>Student details</h3>";
+        echo"<h3>Student details</h3>";
         $student_details = $db->student_details($_SESSION["student_id"]);
         echo '<table border="2">';
-           echo '<tr>';
-           echo '<th>Reg_no.</th>';
-           echo '<th>Name</th>';
-           echo '<th>Dept.</th>';
-           echo '<th>Year</th>';
-           echo '<th>Section</th>';
-           echo '<th>user_id</th>';
-           echo '</tr>';
+        echo '<tr>';
+        echo '<th>Reg_no.</th>';
+        echo '<th>Name</th>';
+        echo '<th>Dept.</th>';
+        echo '<th>Year</th>';
+        echo '<th>Section</th>';
+        echo '<th>user_id</th>';
+        echo '</tr>';
            
         if (mysqli_num_rows($student_details) >= 1) 
         {
@@ -24,13 +24,13 @@
                 $row_details=mysqli_fetch_assoc($student_details);
                 echo '<tr>';
                 echo '<td>'.$row_details['reg_no'].'</td>';
-           echo '<td>'.$row_details['name'].'</td>';
-           echo '<td>'.$row_details['dept'].'</td>';
-           echo '<td>'.$row_details['year'].'</td>';
-           echo '<td>'.$row_details['section'].'</td>';
-           echo '<td>'.$row_details['user_id'].'</td>';
-           echo '</tr>';
-           echo "</table>";
+                echo '<td>'.$row_details['name'].'</td>';
+                echo '<td>'.$row_details['dept'].'</td>';
+                echo '<td>'.$row_details['year'].'</td>';
+                echo '<td>'.$row_details['section'].'</td>';
+                echo '<td>'.$row_details['user_id'].'</td>';
+                echo '</tr>';
+                echo "</table>";
           
 
             }
@@ -43,11 +43,9 @@
 
         echo "<h4>Tickets sent</h4>";
         $tickets = $db->tickets_sent_students($_SESSION["student_id"]);
-
         if (mysqli_num_rows($tickets) >= 1) {
             // $db->print_all($tickets);
             $rowcount=mysqli_num_rows($tickets);
-
             echo "<table border='2'>";
             echo '<tr>';
            // echo '<th>Ticket no.</th>';

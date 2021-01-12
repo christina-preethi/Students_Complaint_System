@@ -7,42 +7,64 @@
 
     if (mysqli_num_rows($ticket) >= 1) {
     // $db->print_all($ticket);
+        echo "<table border='4'>";
         $rowcount_correspondence=mysqli_num_rows($ticket);
         for ($y = 0; $y < $rowcount_correspondence ; $y++) {
             $row = mysqli_fetch_assoc($ticket);
-            echo "Title: ";
-            echo $row['title'];
-            echo "<br>";
-            echo "Body: ";
-            echo $row['body'];
-            echo "<br>";
-            echo "Date: ";
-            echo $row['date'];
-            echo "<br>";
-            echo "Severity: ";
-            echo $row['severity'];
-            echo "<br>";
-            echo "Status: ";
-            echo $row['status'];
-            echo "<br>";
+            echo '<tr>';
+            echo '<td>'."<b>Title:</b>".'</td>';
+            echo '<td>'.$row['title'].'</td>';
+            // echo $row['title'];
+            echo '</tr>';
+            echo '<tr>';
+            // echo "<br>";
+            echo '<td>'."<b>Body:</b>".'</td>';
+            echo '<td>'.$row['body'].'</td>';
+            // echo "<br>";
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>'."<b>Date:</b>".'</td>';
+            echo '<td>'.$row['date'].'</td>';
+            // echo "<br>";
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>'."<b>Severity:</b>".'</td>';
+            echo '<td>'.$row['severity'].'</td>';
+            // echo "<br>";
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>'."<b>Status:</b>".'</td>';
+            echo '<td>'.$row['status'].'</td>';
+            // echo "<br>";
+            echo '</tr>';
         }
+        echo "</table>";
     }
 
     echo "<br>";
+    echo "<h4>DISCUSSION</h4>";
     $ticket_info = $db->ticket_details($_SESSION['ticket_no']);
     if (mysqli_num_rows($ticket_info) >= 1) {
+        echo "<table border='2'>";
+        echo "<tr>";
+        echo '<th>ID No</th>';
+        echo '<th>Message</th>';
+        echo '<th>Date</th>';
+        echo "</tr>";
         $rowcount=mysqli_num_rows($ticket_info);
-            for ($y = 0; $y < $rowcount ; $y++) {
-                $row = mysqli_fetch_assoc($ticket_info);
-                echo $row['faculty_id'];
-                echo " ";
-                echo $row['reg_no'];
-                echo " ";
-                echo $row['messgae'];
-                echo " ";
-                echo $row['date'];
-                echo "<br>";
-            }
+        for ($y = 0; $y < $rowcount ; $y++) {
+            $row = mysqli_fetch_assoc($ticket_info);
+            echo '<tr>';
+            echo '<td>'.$row['faculty_id'];
+            echo $row['reg_no'].'</td>';
+            // echo " ";
+            echo '<td>'.$row['messgae'].'</td>';
+            // echo " ";
+            echo '<td>'.$row['date'].'</td>';
+            // echo "<br>";
+            echo '</tr>';
+        }
+        echo "</table>";
     }
 
 
